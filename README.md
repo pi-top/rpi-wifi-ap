@@ -9,12 +9,15 @@
 ``` bash
 Usage:
 
-    wifi-ap-sta {start,stop,status}
+    wifi-ap-sta [options] <command>
 
-where:
-    start  : use device as wireless access point.
-    stop   : stop access point mode and restore previous configuration.
-    status : display access point state and information.
+Options:
+    -c file : specify custom configuration file.
+
+Commands:
+    start   : use device as wireless access point.
+    stop    : stop access point mode and restore previous configuration.
+    status  : display access point state and information.
 ```
 
 ## Default Behaviour
