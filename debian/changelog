@@ -1,3 +1,9 @@
+wi-fi-access-point-and-station-mode (0.12.0-5) bullseye; urgency=low
+
+  * Added command-line option to specify configuration file
+
+ -- rieck <rieck@mlsec.org>  Sun, 16 Feb 2025 15:00:00 +0000
+
 wi-fi-access-point-and-station-mode (0.12.0-4) bullseye; urgency=medium
 
   * Don't set gateway to avoid connectivity issues (#78)

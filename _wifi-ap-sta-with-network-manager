@@ -61,8 +61,10 @@ usage_and_exit() {
 	echo "Application that sets up a Raspberry Pi as a wireless access point."
 	echo "Customize the access point settings by editing ${AP_MODE_CONFIG_FILE}"
 	echo ""
-	echo -e "Usage:\\n\\t${0} {start,stop,status}"
-	echo "where:"
+	echo -e "Usage:\\n\\t${0} [options] <command>"
+	echo "Options:"
+	echo -e "\\t-c file\\t: specify custom configuration file."
+	echo "Commands:"
 	echo -e "\\tstart\\t: use Raspberry Pi as wireless access point."
 	echo -e "\\tstop\\t: stop access point mode and restore previous configuration."
 	echo -e "\\tstatus\\t: display access point state and information."
@@ -75,6 +77,19 @@ if [[ "$EUID" -ne 0 ]]; then
 	echo "Please run as root"
 	exit 1
 fi
+
+# Parse options
+while getopts "c:" opt; do
+    case ${opt} in
+        c )
+            AP_MODE_CONFIG_FILE=$OPTARG
+            ;;
+        \? )
+            usage_and_exit
+            ;;
+    esac
+done
+shift $((OPTIND -1))
 
 command=${1:-}
 valid_commands=("configure" "start" "stop" "status" "enable" "disable" "wait_interface")
